@@ -1,17 +1,23 @@
 import React from 'react'
 import { render } from 'react-dom'
-import Clock from './components/Clock'
+import ReactDOM from 'react-dom';
+// import Clock from './components/Clock'
 import Clock1 from './components/Clock1'
 
-const renderApp = Component => {
-	render(
-		<Clock />,
-		document.getElementById('root')
-	)
+function Clock(props) {
+  return (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {props.date.toLocaleTimeString()}.</h2>
+    </div>
+  );
 }
 
-renderApp(Clock)
+function tick() {
+  ReactDOM.render(
+    <Clock date={new Date()} />,
+    document.getElementById('root')
+  );
+}
 
-// if (module.hot) {
-// 	module.hot.accept(() => renderApp(App))
-// }
+setInterval(tick, 1000);
